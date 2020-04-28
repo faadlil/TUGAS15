@@ -23,7 +23,7 @@
 			        <div class="card">
 				    <div class="card-body">
                         <h2>Silahkan Login</h2>
-					<form>
+                        <form method="POST" action="backend/login.php">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Email address</label>
 							<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">

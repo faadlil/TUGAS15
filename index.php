@@ -1,3 +1,8 @@
+<?php 
+
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +16,11 @@
 	<link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
 	<link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparant fixed-top mt-3"> 
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparant fixed-top"> 
 		<div class="container">
 			<a class="navbar-brand" href="#">MyBlog</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +41,21 @@
 					<li class="nav-item">
 						<a class="nav-link" href="admin/index.php">Admin</a>
 					</li>
-					<li class="nav-item ml-5">
-						<a class="btn btn-success" href="login.php">Login</a>
-					</li>
+					<?php 
+
+					if ($_SESSION && $_SESSION['status']=='login') {
+						?>
+						<a class="btn btn-success" href="backend/logout.php">Logout</a>
+
+						<?php
+					}else { ?>
+						<li class="nav-item ml-5">
+							<a class="btn btn-success" href="login.php">Login</a>
+						</li>
+
+						<?php
+					}
+					?>
 				</ul>
 			</div>
 		</div>
@@ -47,6 +65,14 @@
 		<div class="container">
 			<div class='row'>
 				<div class="col-12">
+				<?php 
+
+if ($_SESSION) {
+   if ($_SESSION['status'] == 'login') {
+	   echo 'Kamu telah login dengan email: ' . $_SESSION['email'];
+   }
+}
+?>
 				<h1 class="display-5"><i>IF WE DON'T GET LOST,<br>WE'LL NEVER FIND A NEW ROAD</i></h1>
 		    	<center><a class="btn border px-4" href="#" role="button">WATCH VIDEO</a>	
 			    <a class="btn border px-4 ml-3" href="#" role="button">LEARN MORE</a></center>
@@ -57,6 +83,7 @@
 
 	<section id="about">
 		<div class="container">
+		<div data-aos="fade-right">
 		  	<div class="row">
 				<div class="col-7">
 					<div class="row">
@@ -69,11 +96,11 @@
 								<img src="gambar/phi.jpeg" width="100%" >
 						</div>
 					</div>
-				</div>
-				<div class="col-5">
-					<i><h3>Discover</h3></i>
-					<h2>WISUDA TAHUN 2019</h2>
-					<p>Sebanyak 1056 mahasiswa Polinema (Politeknik Negeri Malang) diwisuda, 
+			    </div>	
+					<div class="col-5">
+						<i><h3>Discover</h3></i>
+						<h2>WISUDA TAHUN 2019</h2>
+						<p>Sebanyak 1056 mahasiswa Polinema (Politeknik Negeri Malang) diwisuda, 
 						Sabtu (28/9/2019) pagi di Gedung Graha Polinema. Dengan bekal selama 
 						menempuh perkuliahan, diharapkan lulusan ini nantinya bisa mandiri 
 						dan sukses di kehidupan bermasyarakat.Menginggat para alumni-alumni 
@@ -83,13 +110,16 @@
 						perusahaan besar yang telah mempercayai kehebatan lulusan Polinema.</p>	
 
 						<a class="btn btn-primary" href="">Read More</a>
-				</div>
+					</div>
+            	</div>
 			</div>
 		</div>
 	</section>
 
+	<div data-aos="flip-down">
 	<section id="photo">
 		<div class="container">
+		
 			<div class="row">
 				<div class="col-12">
 					<h1>SLIDE PHOTO</h1>
@@ -109,8 +139,10 @@
 				</div>
 			</div>
 			<center><a class="btn btn-info mt-4 px-5 py-2" href="">GALERI</a></center>
+
 		</div>
 	</section>
+	</div>
  
 	 <footer>
 		<div class="container">
@@ -154,7 +186,17 @@
 				autoplayHoverPause:true
 			})
 		</script>
-
+		<script>
+        $(document).scroll(function () {
+            var nav = $("#navbar");
+            nav.toggleClass('scrolled', $(this).scrollTop() > nav.height());
+        });
+	</script>
+	
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

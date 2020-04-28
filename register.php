@@ -14,7 +14,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mt-0 "> 
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top mt-0 "> 
 		<div class="container">
 			<a class="navbar-brand" href="#">MyBlog</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +35,21 @@
 					<li class="nav-item">
 						<a class="nav-link" href="admin/index.php">Admin</a>
 					</li>
-					<li class="nav-item ml-5">
-						<a class="btn btn-success" href="login.php">Login</a>
-					</li>
+					<?php 
+
+					if ($_SESSION && $_SESSION['status']=='login') {
+						?>
+						<a class="btn btn-success" href="backend/logout.php">Logout</a>
+
+						<?php
+					}else { ?>
+						<li class="nav-item ml-5">
+							<a class="btn btn-success" href="login.php">Login</a>
+						</li>
+
+						<?php
+					}
+					?>
 				</ul>
 			</div>
 		</div>
@@ -95,6 +107,13 @@
 			</div>
 		</div>
     </footer> 
+
+    <script>
+        $(document).scroll(function () {
+            var nav = $("#navbar");
+            nav.toggleClass('scrolled', $(this).scrollTop() > nav.height());
+        });
+    </script>
     
  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
