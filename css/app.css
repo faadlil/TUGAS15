@@ -1,0 +1,109 @@
+ul li{
+	margin-left: 20px;
+}
+.jumbotron-custom{
+height: 100vh;
+background-image: url(../gambar/bg.jpeg);
+background-size: cover;
+background-position: center;
+margin: 0;
+color: white;
+}
+.jumbotron-custom h1{
+	margin-top: 20vh;
+	text-align: center;
+	opacity: 50%;
+	margin-bottom: 5vh;
+	font-size: 60px;
+}
+.jumbotron-custom a{
+	color: white;
+	display: inline-block;
+}
+#about{
+	margin-top: 100px;
+}
+#about h3{
+	font-family: pacifico;
+}
+#about p{
+	text-align: justify;
+	text-indent: 50px;
+}
+#photo{
+	margin-top: 60px;
+	padding-top: 50px;
+	background-color:#D6DBDF;
+	padding-bottom: 30px;
+}
+#photo h1{
+	text-align: center;
+}
+#photo p{
+	text-align: center;
+}
+
+footer{
+	background-color:rgb(160, 136, 63);
+	padding-top: 60px;
+	padding-bottom: 30px;
+	margin-top: 40px;
+}
+.fix{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	margin-top: 40px;
+}
+
+footer h6{
+	margin-left: 20px;
+}
+
+footer p{
+	margin-left: 20px;
+}
+
+footer a{
+	color: cornsilk;
+	font-size: 30px;
+	margin: 2px;
+}
+
+
+#blog{
+	margin-top: 100px;
+}
+
+.bglogin{
+	background-image: url(../gambar/22.jpg);
+	background-size: cover;
+}
+#login{
+	margin-top: 100px;
+	width: 400px;
+	margin-left: 35%;
+}
+
+#login button{
+	text-align: center;
+	padding: 8px 141px 8px 141px;
+	font-size: 17px;
+}
+#login h2{
+	margin-bottom: 25px;
+}
+.new{
+	margin-top: 30px;
+}
+.new p{
+	margin-left: 4px;
+}
+
+#register {
+	margin-top: 90px;
+	width: 700px;
+	margin-left: 300px;
+	margin-bottom: 100px;
+	box-shadow: 5px 10px 4px;
+}
